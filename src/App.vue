@@ -10,7 +10,7 @@
       </div>
       <div class="content">
         <label for="body">Content</label>
-        <input type="text" id="body" v-model="body" placeholder="TODOの内容を入力してください">
+        <input id="body" v-model="body" placeholder="TODOの内容を入力してください" type="text">
       </div>
       <!--追加ボタン-->
       <div>
@@ -102,14 +102,14 @@ export default {
 }
 
 #app {
-  background-image: url('https://media.giphy.com/media/lkceXNDw4Agryfrwz8/source.gif');
-  background-size: cover;
-  background-position: center;
   width: 100vw;
-  /*height: 100%;*/
+  min-height: 100vh;
   font-family: 'My Font', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
   font-size: 16px;
-  min-height: 100vh;
+  /*height: 100%;*/
+  background-image: url('https://media.giphy.com/media/lkceXNDw4Agryfrwz8/source.gif');
+  background-position: center;
+  background-size: cover;
 }
 
 .wrapper {
@@ -120,19 +120,19 @@ export default {
 
 h1 {
   padding: 50px 0 40px;
-  font-size: 4rem;
-  text-align: center;
   font-family: 'Press Start 2P', cursive;
+  font-size: 4rem;
   color: #fff52e;
+  text-align: center;
   text-shadow: 1px 1px 0 #ffffff, -1px 1px 0 #ffffff, 1px -1px 0 #ffffff, -1px -1px 0 #ffffff;
 }
 
 h2 {
   font-size: 2rem;
-  text-align: center;
-  color: #80ff29;
-  text-shadow: 0 0 2px #fdfdfd;
   font-weight: bold;
+  color: #80ff29;
+  text-align: center;
+  text-shadow: 0 0 2px #fdfdfd;
 }
 
 h2::before {
@@ -145,10 +145,10 @@ h2::after {
 
 p {
   padding: 15px 0;
-  font-size: 1.5rem;
-  text-align: center;
-  color: #99ff2e;
   font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  color: #99ff2e;
+  text-align: center;
 }
 
 label {
@@ -160,10 +160,10 @@ label {
 #body {
   width: 100%;
   color: #80ff29;
+  text-indent: .5em;
   background-color: #000000;
   border: 2px solid #80ff29;
   border-radius: 5px;
-  text-indent: .5em;
 }
 
 #title::placeholder,
@@ -183,9 +183,9 @@ label {
 
 .title label,
 .content label {
-  font-size: 2rem;
-  font-family: 'Press Start 2P', cursive;
   margin: 20px 0 15px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
   color: #99ff2e;
   text-shadow: 0 0 3px #fdfdfd, 0 0 3px #fdfdfd;
 }
@@ -194,17 +194,17 @@ label {
   display: block;
   padding: 5px 10px;
   margin: 30px auto 50px;
+  font-family: 'Press Start 2P', cursive;
   font-size: 1.2rem;
   color: #575757;
   background-color: #fff52e;
   border-radius: 10px;
   box-shadow: 0 0 5px #fdfdfd, 0 0 5px #fdfdfd, 0 0 5px #fdfdfd;
-  font-family: 'Press Start 2P', cursive;
 }
 
 .todo-wrapper {
-  background-color: rgba(77, 77, 77, 0.7);
   padding: 0 1rem;
+  background-color: rgba(77, 77, 77, 0.7);
   border: 7px solid #fff52e;
   border-radius: 10px;
 }
@@ -218,14 +218,13 @@ label {
 }
 
 .todo-list_item {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   font-size: 1.2rem;
   line-height: 1.7;
   color: #99ff2e;
   word-break: break-word;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
 }
 
 /*チェックボックス*/
@@ -233,8 +232,8 @@ label {
   width: 1rem;
   height: 1rem;
   margin-right: 1rem;
-  border: 2px solid #fff52e;
   vertical-align: middle;
+  border: 2px solid #fff52e;
 }
 
 /*label*/
@@ -266,18 +265,18 @@ label {
 
 /*削除ボタン*/
 .delete-todo {
-  cursor: pointer;
-  margin-top: 1rem;
   width: 80px;
   height: 20px;
   padding: 3px 5px;
+  margin-top: 1rem;
+  font-family: 'Press Start 2P', cursive;
   font-size: .5rem;
   color: #fdfdfd;
   text-align: center;
+  cursor: pointer;
   background-color: #ff0062;
   border-radius: 5px;
   box-shadow: 0 0 3px #fdfdfd, 0 0 3px #fdfdfd, 0 0 3px #fdfdfd;
-  font-family: 'Press Start 2P', cursive;
 }
 
 /*チェック時に打ち消し線*/
@@ -291,15 +290,15 @@ label {
 }
 
 .all-delete_btn {
-  cursor: pointer;
-  font-size: 1.2rem;
   display: block;
   padding: 5px 10px;
   margin: 0 auto;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
   color: #fdfdfd;
   text-align: center;
+  cursor: pointer;
   background-color: #ff0000;
-  font-family: 'Press Start 2P', cursive;
   border-radius: 5px;
   box-shadow: 0 0 3px #fdfdfd, 0 0 3px #fdfdfd, 0 0 3px #fdfdfd;
 }
@@ -314,8 +313,8 @@ label {
   }
 
   h1 {
-    font-size: 2rem;
     padding: 2rem 0;
+    font-size: 2rem;
   }
 
   h2 {
@@ -324,9 +323,9 @@ label {
 
   .title label,
   .content label {
+    margin: 1rem 0 10px;
     font-size: 1.2rem;
     text-shadow: 0 0 2px #fdfdfd, 0 0 2px #fdfdfd;
-    margin: 1rem 0 10px;
   }
 
   .content label {
@@ -364,8 +363,8 @@ label {
   }
 
   .all-delete_btn {
-    font-size: 1rem;
     font-family: "My Font", sans-serif;
+    font-size: 1rem;
   }
 }
 </style>
