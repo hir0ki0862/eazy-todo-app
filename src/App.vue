@@ -20,22 +20,20 @@
       <div class="todo-wrapper">
         <ul class="todo-list" v-for="(list, i) in lists" :key="i">
           <li id="checkbox" class="todo-list_item">
-            <label class="check">
+            <label class="check" :class="{done: list.isChecked}">
               <input
                 type="checkbox"
                 class="todo-checkbox"
-                v-model="isChecked"><span class="check-mark"></span>{{ list.title }}
+                v-model="list.isChecked" @change="saveTodo"><span
+              class="check-mark"></span>{{ list.title }}
               <br>{{ list.body }}</label>
             <button class="delete-todo" @click="deleteList(i)">削除</button>
           </li>
         </ul>
+        <!--すべて削除するボタン-->
+        <button class="all-delete_btn" @click="deleteAll">チェック済みのTODOを削除</button>
       </div>
     </div>
-
-    <!--TODO:最後に消す！-->
-    <pre>
-      {{ $data }}
-    </pre>
   </div>
 </template>
 
@@ -44,10 +42,7 @@ export default {
   name: 'App',
   data() {
     return {
-      lists: [
-        {title: 'mytodo', body: 'contentcontent', isChecked: true},
-        {title: 'hogehoge', body: 'testtest', isChecked: false}
-      ],
+      lists: [],
       title: '',
       body: ''
     };
@@ -62,11 +57,33 @@ export default {
       // 追加し終わったらフォームのvalueを空にする
       this.title = '';
       this.body = '';
+      // ブラウザに保存
+      this.saveTodo();
     },
     // todoの削除
     deleteList: function (i) {
       this.lists.splice(i, 1);
+      this.saveTodo();
+    },
+    // チェック済みを全て削除
+    deleteAll: function () {
+      this.lists = this.lists.filter(function (list) {
+        return list.isChecked === false;
+      });
+      this.saveTodo();
+    },
+    saveTodo: function () {
+      localStorage.setItem('lists', JSON.stringify(this.lists));
+    },
+    loadTodo: function () {
+      this.lists = JSON.parse(localStorage.getItem('lists'));
+      if (!this.lists) {
+        this.lists = [];
+      }
     }
+  },
+  mounted() {
+    this.loadTodo();
   }
 };
 </script>
@@ -139,6 +156,7 @@ label {
   word-break: break-word;
 }
 
+/*チェックボックス*/
 .todo-checkbox {
   width: 1rem;
   height: 1rem;
@@ -146,6 +164,7 @@ label {
   margin-right: 1rem;
 }
 
+/*label*/
 .check {
   position: relative;
   cursor: pointer;
@@ -153,6 +172,7 @@ label {
   width: fit-content;
 }
 
+/*チェックマーク*/
 .check-mark::after {
   content: '';
   position: absolute;
@@ -166,10 +186,12 @@ label {
   opacity: 0;
 }
 
+/*チェックされたとき*/
 .check input:checked + .check-mark::after {
   opacity: 1;
 }
 
+/*削除ボタン*/
 .delete-todo {
   display: block;
   font-size: .8rem;
@@ -179,7 +201,24 @@ label {
   text-align: center;
   border-radius: 5px;
   color: #fdfdfd;
-  background-color: #dc322f;
+  background-color: #dc2f2f;
   box-shadow: 0 0 3px #666666;
+}
+
+/*チェック時に打ち消し線*/
+.done {
+  text-decoration: line-through 2px solid black;
+  color: #8f8f8f;
+}
+
+.all-delete_btn {
+  display: block;
+  text-align: center;
+  margin: 30px auto;
+  border-radius: 5px;
+  color: #fdfdfd;
+  background-color: #ff0000;
+  box-shadow: 0 0 3px #666666;
+  padding: 5px 10px;
 }
 </style>
