@@ -19,8 +19,13 @@
       <!--todo内容表示部分-->
       <div class="todo-wrapper">
         <ul class="todo-list" v-for="(list, i) in lists" :key="i">
-          <li id="checkbox" class="todo-list_item"><input type="checkbox" class="todo-checkbox"
-            v-model="isChecked">{{ list.title }}<br>{{ list.body }}
+          <li id="checkbox" class="todo-list_item">
+            <label class="check">
+              <input
+                type="checkbox"
+                class="todo-checkbox"
+                v-model="isChecked"><span class="check-mark"></span>{{ list.title }}
+              <br>{{ list.body }}</label>
             <button class="delete-todo" @click="deleteList(i)">削除</button>
           </li>
         </ul>
@@ -86,7 +91,6 @@ h1 {
 }
 
 label {
-  font-size: 1.3rem;
   display: block;
   padding-top: 1rem;
 }
@@ -132,25 +136,50 @@ label {
 
 .todo-list_item {
   line-height: 1.7;
-  position: relative;
+  word-break: break-word;
 }
 
 .todo-checkbox {
   width: 1rem;
   height: 1rem;
   border: 1px solid #fdfdfd;
-  cursor: pointer;
   margin-right: 1rem;
 }
 
+.check {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+}
+
+.check-mark::after {
+  content: '';
+  position: absolute;
+  top: 1.2rem;
+  left: 0.4rem;
+  width: 10px;
+  height: 18px;
+  border: solid #dc322f;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.check input:checked + .check-mark::after {
+  opacity: 1;
+}
+
 .delete-todo {
+  display: block;
   font-size: .8rem;
+  margin: 1rem auto 0;
   padding: 3px 5px;
+  width: 80px;
+  text-align: center;
   border-radius: 5px;
   color: #fdfdfd;
   background-color: #dc322f;
   box-shadow: 0 0 3px #666666;
-  position: absolute;
-  right: 1rem;
 }
 </style>
