@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <h1>Eazy TODO</h1>
+    <h2>TODOを管理しよう</h2>
     <div class="wrapper">
       <!--todo追加部分-->
       <div class="title">
         <label for="title">Title</label>
-        <input type="text" v-model="title" id="title" placeholder="タイトルを入力してください">
+        <input type="text" v-model="title" id="title" placeholder="TODOのタイトルを入力してください">
       </div>
       <div class="content">
         <label for="body">Content</label>
-        <textarea v-model="body" id="body" placeholder="内容を入力してください"></textarea>
+        <textarea v-model="body" id="body" placeholder="TODOの内容を入力してください"></textarea>
       </div>
       <!--追加ボタン-->
       <div>
@@ -18,6 +19,7 @@
 
       <!--todo内容表示部分-->
       <div class="todo-wrapper">
+        <p v-show="lists.length === 0">TODOはありません</p>
         <ul class="todo-list" v-for="(list, i) in lists" :key="i">
           <li id="checkbox" class="todo-list_item">
             <label class="check" :class="{done: list.isChecked}">
@@ -30,9 +32,9 @@
             <button class="delete-todo" @click="deleteList(i)">削除</button>
           </li>
         </ul>
-        <!--すべて削除するボタン-->
-        <button class="all-delete_btn" @click="deleteAll">チェック済みのTODOを削除</button>
       </div>
+      <!--すべて削除するボタン-->
+      <button class="all-delete_btn" v-if="lists.length !== 0" @click="deleteAll">チェック済みのTODOを削除</button>
     </div>
   </div>
 </template>
@@ -90,7 +92,7 @@ export default {
 <style>
 #app {
   font-size: 16px;
-  background-color: #ffb465;
+  background-color: #ffb45e;
   width: 100vw;
   height: 100vh;
   font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
@@ -107,6 +109,17 @@ h1 {
   padding: 15px 0;
 }
 
+h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+p {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 15px 0;
+}
+
 label {
   display: block;
   padding-top: 1rem;
@@ -117,6 +130,16 @@ label {
   background-color: #fdfdfd;
   color: #666666;
   padding: 0 .5rem;
+}
+
+.title,
+.content {
+  font-size: 1.1rem;
+}
+
+.title label,
+.content label {
+  font-size: 2rem;
 }
 
 #body {
@@ -221,4 +244,5 @@ label {
   box-shadow: 0 0 3px #666666;
   padding: 5px 10px;
 }
+
 </style>
