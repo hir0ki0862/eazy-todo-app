@@ -205,6 +205,7 @@ label {
   font-family: 'Press Start 2P', cursive;
   font-size: 1.2rem;
   color: #575757;
+  cursor: pointer;
   background-color: #fff52e;
   border-radius: 10px;
   box-shadow: 0 0 5px #fdfdfd, 0 0 5px #fdfdfd, 0 0 5px #fdfdfd;

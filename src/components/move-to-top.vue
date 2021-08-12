@@ -1,11 +1,12 @@
 <template>
   <!--pageTopボタン-->
-  <transition name="fade">
-    <div v-if="show" class="pagetop-container">
-      <img class="page-top_button" src="../../public/img/page_top_button.png" alt="page-top-button"
+  <div class="pagetop-container">
+    <transition name="fade">
+      <img v-if="show" alt="page-top-button" class="page-top_button"
+        src="../../public/img/page_top_button.png"
         @click="pageTop">
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -25,16 +26,6 @@ export default {
     }
   },
   mounted() {
-    let style = document.createElement('style');
-    style.innerHTML = `
-                    .fade-enter-active, .fade-leave-active {
-                        transition: opacity .5s;
-                    }
-                    .fade-enter, .fade-leave-to {
-                        opacity: 0;
-                    }
-                `;
-    document.getElementsByTagName('head')[0].appendChild(style);
     window.addEventListener('scroll', () => {
       this.show = (window.scrollY > 150);
     });
@@ -54,7 +45,7 @@ export default {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .5s ease-in-out;
 }
 
 .fade-enter, .fade-leave-to {
