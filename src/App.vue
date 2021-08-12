@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Eazy TODO</h1>
+    <h1 class="animate__animated animate__slower animate__pulse animate__infinite">EazyTODO</h1>
     <h2>TODOを管理しよう</h2>
     <div class="wrapper">
       <!--todo追加部分-->
@@ -40,12 +40,18 @@
         </button>
       </div>
     </div>
+    <move-top></move-top>
   </div>
 </template>
 
 <script>
+import moveTop from './components/move-to-top'
+
 export default {
   name: 'App',
+  components: {
+    moveTop
+  },
   data() {
     return {
       lists: [],
@@ -119,7 +125,9 @@ export default {
 }
 
 h1 {
+  width: 80vw;
   padding: 50px 0 40px;
+  margin: 0 auto;
   font-family: 'Press Start 2P', cursive;
   font-size: 4rem;
   color: #fff52e;
@@ -363,7 +371,7 @@ label {
   }
 
   .all-delete_btn {
-    font-family: "My Font", sans-serif;
+    font-family: 'My Font', sans-serif;
     font-size: 1rem;
   }
 }
