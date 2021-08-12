@@ -19,7 +19,7 @@
 
       <!--todo内容表示部分-->
       <div class="todo-wrapper">
-        <p v-show="lists.length === 0">Let's Add a TODO</p>
+        <p v-show="lists.length === 0" class="no-todo_title">Let's Add a TODO</p>
         <ul v-for="(list, i) in lists" :key="i" class="todo-list">
           <li id="checkbox" class="todo-list_item">
             <label :class="{done: list.isChecked}" class="check">
@@ -373,6 +373,10 @@ label {
   .all-delete_btn {
     font-family: 'My Font', sans-serif;
     font-size: 1rem;
+  }
+
+  .no-todo_title {
+    font-family: 'My Font', sans-serif;
   }
 }
 </style>
