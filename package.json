@@ -5,11 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "autoprefix": "npx postcss dist/css/ --use autoprefixer --sourcemap false --replace"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "autoprefixer": "^10.3.1",
     "core-js": "^3.6.5",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
     "vue": "^3.0.0"
   },
   "devDependencies": {
@@ -36,8 +40,9 @@
     "rules": {}
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
+    "> 1% in JP",
+    "ie >= 11",
+    "last 4 versions",
     "not dead"
   ]
 }
