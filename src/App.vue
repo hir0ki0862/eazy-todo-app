@@ -291,6 +291,7 @@ label {
 /*チェック時に打ち消し線*/
 .done {
   color: #fdfdfd;
+  -webkit-text-decoration: line-through;
   text-decoration: line-through 2px solid #ffffff;
 }
 
