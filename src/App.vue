@@ -6,15 +6,15 @@
       <!--todo追加部分-->
       <div class="title">
         <label for="title">Title</label>
-        <input id="title" v-model="title" placeholder="TODOのタイトルを入力してください" type="text">
+        <input id="title" v-model="title" placeholder="TODOのタイトルを入力してください" type="text" />
       </div>
       <div class="content">
         <label for="body">Content</label>
-        <input id="body" v-model="body" placeholder="TODOの内容を入力してください" type="text">
+        <input id="body" v-model="body" placeholder="TODOの内容を入力してください" type="text" />
       </div>
       <!--追加ボタン-->
       <div>
-        <input class="add-todo" type="submit" value="Add" @click="addList">
+        <input class="add-todo" type="submit" value="Add" @click="addList" />
       </div>
 
       <!--todo内容表示部分-->
@@ -26,16 +26,22 @@
               <input
                 v-model="list.isChecked"
                 class="todo-checkbox"
-                type="checkbox" @change="saveTodo"><span
-              class="check-mark"></span>{{ list.title }}
-              <br>『{{ list.body }}』</label>
+                type="checkbox"
+                @change="saveTodo"
+              />
+              <span class="check-mark"></span>
+              {{ list.title }}
+              <br />
+              『{{ list.body }}』
+            </label>
             <button class="delete-todo" @click="deleteList(i)">Delete</button>
           </li>
         </ul>
       </div>
       <!--すべて削除するボタン-->
       <div class="alldelete">
-        <button v-if="lists.length !== 0" class="all-delete_btn" @click="deleteAll">Delete checked
+        <button v-if="lists.length !== 0" class="all-delete_btn" @click="deleteAll">
+          Delete checked
           TODOs
         </button>
       </div>
@@ -52,52 +58,52 @@ export default {
   components: {
     moveTop
   },
-  data() {
+  data () {
     return {
       lists: [],
       title: '',
       body: ''
-    };
+    }
   },
   methods: {
     // todoの追加
     addList: function () {
       // 入力されていなければデータを追加しない
-      if (this.title === '' || this.body === '') return;
+      if (this.title === '' || this.body === '') return
       // 入力されたデータをlistsに追加する
-      this.lists.push({title: this.title, body: this.body, isChecked: false});
+      this.lists.push({ title: this.title, body: this.body, isChecked: false })
       // 追加し終わったらフォームのvalueを空にする
-      this.title = '';
-      this.body = '';
+      this.title = ''
+      this.body = ''
       // ブラウザに保存
-      this.saveTodo();
+      this.saveTodo()
     },
     // todoの削除
     deleteList: function (i) {
-      this.lists.splice(i, 1);
-      this.saveTodo();
+      this.lists.splice(i, 1)
+      this.saveTodo()
     },
     // チェック済みを全て削除
     deleteAll: function () {
       this.lists = this.lists.filter(function (list) {
-        return list.isChecked === false;
-      });
-      this.saveTodo();
+        return list.isChecked === false
+      })
+      this.saveTodo()
     },
     saveTodo: function () {
-      localStorage.setItem('lists', JSON.stringify(this.lists));
+      localStorage.setItem('lists', JSON.stringify(this.lists))
     },
     loadTodo: function () {
-      this.lists = JSON.parse(localStorage.getItem('lists'));
+      this.lists = JSON.parse(localStorage.getItem('lists'))
       if (!this.lists) {
-        this.lists = [];
+        this.lists = []
       }
     }
   },
-  mounted() {
-    this.loadTodo();
+  mounted () {
+    this.loadTodo()
   }
-};
+}
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
@@ -112,7 +118,8 @@ export default {
   min-height: 100vh;
   font-family: 'My Font', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
   font-size: 16px;
-  /*height: 100%;*/
+
+  /* height: 100%; */
   background-image: url('https://media.giphy.com/media/lkceXNDw4Agryfrwz8/source.gif');
   background-position: center;
   background-size: cover;
@@ -132,7 +139,7 @@ h1 {
   font-size: 4rem;
   color: #fff52e;
   text-align: center;
-  text-shadow: 1px 1px 0 #ffffff, -1px 1px 0 #ffffff, 1px -1px 0 #ffffff, -1px -1px 0 #ffffff;
+  text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
 }
 
 h2 {
@@ -168,8 +175,8 @@ label {
 #body {
   width: 100%;
   color: #80ff29;
-  text-indent: .5em;
-  background-color: #000000;
+  text-indent: 0.5em;
+  background-color: #000;
   border: 2px solid #80ff29;
   border-radius: 5px;
 }
@@ -177,7 +184,7 @@ label {
 #title::placeholder,
 #body::placeholder {
   color: #fdfdfd;
-  background-color: #000000;
+  background-color: #000;
 }
 
 .content {
@@ -219,11 +226,10 @@ label {
 }
 
 .todo-list {
-  padding: 1rem 0 .5rem 0;
+  padding: 1rem 0 0.5rem 0;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   border-bottom: 3px solid #fff52e;
-
 }
 
 .todo-list_item {
@@ -236,7 +242,7 @@ label {
   word-break: break-word;
 }
 
-/*チェックボックス*/
+/* チェックボックス */
 .todo-checkbox {
   width: 1rem;
   height: 1rem;
@@ -245,7 +251,7 @@ label {
   border: 2px solid #fff52e;
 }
 
-/*label*/
+/* label */
 .check {
   position: relative;
   width: fit-content;
@@ -253,10 +259,10 @@ label {
   user-select: none;
 }
 
-/*チェックマーク*/
+/* チェックマーク */
 .check-mark::after {
   position: absolute;
-  top: .8rem;
+  top: 0.8rem;
   left: 0.2rem;
   width: 13px;
   height: 22px;
@@ -267,19 +273,19 @@ label {
   transform: rotate(45deg);
 }
 
-/*チェックされたとき*/
+/* チェックされたとき */
 .check input:checked + .check-mark::after {
   opacity: 1;
 }
 
-/*削除ボタン*/
+/* 削除ボタン */
 .delete-todo {
   width: 80px;
   height: 20px;
   padding: 3px 5px;
   margin-top: 1rem;
   font-family: 'Press Start 2P', cursive;
-  font-size: .5rem;
+  font-size: 0.5rem;
   color: #fdfdfd;
   text-align: center;
   cursor: pointer;
@@ -288,11 +294,11 @@ label {
   box-shadow: 0 0 3px #fdfdfd, 0 0 3px #fdfdfd, 0 0 3px #fdfdfd;
 }
 
-/*チェック時に打ち消し線*/
+/* チェック時に打ち消し線 */
 .done {
   color: #fdfdfd;
   -webkit-text-decoration: line-through;
-  text-decoration: line-through 2px solid #ffffff;
+  text-decoration: line-through 2px solid #fff;
 }
 
 .alldelete {
@@ -308,7 +314,7 @@ label {
   color: #fdfdfd;
   text-align: center;
   cursor: pointer;
-  background-color: #ff0000;
+  background-color: #f00;
   border-radius: 5px;
   box-shadow: 0 0 3px #fdfdfd, 0 0 3px #fdfdfd, 0 0 3px #fdfdfd;
 }
