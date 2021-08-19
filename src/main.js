@@ -6,5 +6,4 @@ import VAnimateCss from 'animate.css'
 import './assets/css/reset.css'
 // font
 
-
 createApp(App).use(VAnimateCss).mount('#app')
