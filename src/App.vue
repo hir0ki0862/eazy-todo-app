@@ -40,9 +40,11 @@
       </div>
       <!--すべて削除するボタン-->
       <div class="alldelete">
-        <button v-if="lists.length !== 0" class="all-delete_btn" @click="deleteAll">
-          Delete checked
-          TODOs
+        <button
+          v-if="lists.length !== 0"
+          class="all-delete_btn"
+          @click="deleteAll"
+        >Delete checked TODOs
         </button>
       </div>
     </div>
@@ -110,7 +112,7 @@ export default {
 
 @font-face {
   font-family: 'My Font';
-  src: url('~@/assets/fonts/PixelMplus12-Regular.ttf') format('truetype');
+  src: url('./assets/fonts/PixelMplus12-Regular.ttf') format('truetype');
 }
 
 #app {

@@ -2,9 +2,13 @@
   <!--pageTopボタン-->
   <div class="pagetop-container">
     <transition name="fade">
-      <img v-if="show" alt="page-top-button" class="page-top_button"
+      <img
+        v-if="show"
+        alt="page-top-button"
+        class="page-top_button"
         src="../../public/img/page_top_button.png"
-        @click="pageTop">
+        @click="pageTop"
+      />
     </transition>
   </div>
 </template>
@@ -15,22 +19,22 @@ export default {
   data() {
     return {
       show: false
-    };
+    }
   },
   methods: {
     pageTop: function () {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
-      });
+      })
     }
   },
   mounted() {
     window.addEventListener('scroll', () => {
-      this.show = (window.scrollY > 150);
-    });
+      this.show = (window.scrollY > 150)
+    })
   }
-};
+}
 </script>
 
 <style scoped>
@@ -44,11 +48,13 @@ export default {
   cursor: pointer;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s ease-in-out;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
