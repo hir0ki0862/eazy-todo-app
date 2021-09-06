@@ -16,7 +16,7 @@
 <script>
 export default {
   name: 'moveTop',
-  data() {
+  data () {
     return {
       show: false
     }
@@ -29,7 +29,7 @@ export default {
       })
     }
   },
-  mounted() {
+  mounted () {
     window.addEventListener('scroll', () => {
       this.show = (window.scrollY > 150)
     })

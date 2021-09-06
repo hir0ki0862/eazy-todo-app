@@ -6,15 +6,15 @@
       <!--todo追加部分-->
       <div class="title">
         <label for="title">Title</label>
-        <input id="title" v-model="title" placeholder="TODOのタイトルを入力してください" type="text" />
+        <input id="title" v-model="title" placeholder="TODOのタイトルを入力してください" type="text"/>
       </div>
       <div class="content">
         <label for="body">Content</label>
-        <input id="body" v-model="body" placeholder="TODOの内容を入力してください" type="text" />
+        <input id="body" v-model="body" placeholder="TODOの内容を入力してください" type="text"/>
       </div>
       <!--追加ボタン-->
       <div>
-        <input class="add-todo" type="submit" value="Add" @click="addList" />
+        <input class="add-todo" type="submit" value="Add" @click="addList"/>
       </div>
 
       <!--todo内容表示部分-->
@@ -31,7 +31,7 @@
               />
               <span class="check-mark"></span>
               {{ list.title }}
-              <br />
+              <br/>
               『{{ list.body }}』
             </label>
             <button class="delete-todo" @click="deleteList(i)">Delete</button>
@@ -118,7 +118,14 @@ export default {
 #app {
   width: 100vw;
   min-height: 100vh;
-  font-family: 'My Font', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  font-family:
+    'My Font',
+    'Helvetica Neue',
+    Arial,
+    'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans',
+    Meiryo,
+    sans-serif;
   font-size: 16px;
 
   /* height: 100%; */
